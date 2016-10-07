@@ -50,8 +50,50 @@ namespace Parse
         {
             // TODO: write code for parsing an exp
 
-            var tok = scanner;
-            if (!)
+            Token tok = scanner.getNextToken();
+            TokenType tt = tok.getType();
+            
+            if (tt == TokenType.LPAREN) {
+
+            }
+
+            else if (tt == TokenType.RPAREN) {
+
+            }
+
+            else if (tt == TokenType.INT)
+            {
+
+            }
+
+            else if (tt == TokenType.DOT) {
+
+            }
+
+            else if (tt == TokenType.TRUE) {
+
+            }
+
+            else if (tt == TokenType.FALSE) {
+
+            }
+
+            else if (tt == TokenType.IDENT) {
+
+            }
+
+            else if (tt == TokenType.QUOTE){
+
+            }
+
+            else if (tt == TokenType.STRING) {
+
+            }
+
+            else if (tok == null) {
+                return null;
+            }
+
 
             return null;
         }
