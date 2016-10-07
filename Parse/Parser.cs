@@ -35,7 +35,6 @@
 
 
 using System;
-using System.Collections.Generic;
 using Tokens;
 using Tree;
 
@@ -45,56 +44,74 @@ namespace Parse
 	
         private Scanner scanner;
 
-        public Parser(Scanner s) { scanner = s; }
+        public Parser(Scanner s) {
+            scanner = s;
+
+        }
   
         public Node parseExp()
         {
             // TODO: write code for parsing an exp
 
-            var tree = new List<Token>();
             Token tok = scanner.getNextToken();
-            TokenType tt = tok.getType();
-
-            while (tt != null) { 
             
+
+            
+            if (tok != null) {
+
+                TokenType tt = tok.getType();
+
                 if (tt == TokenType.LPAREN) {
-                    tree.Add(tok);
+                    tok = scanner.getNextToken();
+                    
                 }
 
                 else if (tt == TokenType.RPAREN) {
-                    tree.Add(tok);
+                    
                 }
 
                 else if (tt == TokenType.INT) {
-                    tree.Add(tok);
+                    Node INT = new Tree.IntLit(tok.getIntVal());
+                    tok = scanner.getNextToken();
+                    return INT;
                 }
 
                 else if (tt == TokenType.DOT) {
-                    tree.Add(tok);
+                    
                 }
 
                 else if (tt == TokenType.TRUE) {
-                    tree.Add(tok);
+                    Node node = new Tree.BoolLit(true);
+                    return node;
                 }
 
                 else if (tt == TokenType.FALSE) {
-                    tree.Add(tok);
+                    Node node = new Tree.BoolLit(false);
+                    return node;
                 }
 
                 else if (tt == TokenType.IDENT) {
-                    tree.Add(tok);
+                    Node IDENT = new Tree.Ident(tok.getStringVal());
+                    tok = scanner.getNextToken();
+                    return IDENT;
                 }
 
                 else if (tt == TokenType.QUOTE){
-                    tree.Add(tok);
+                    
                 }
 
                 else if (tt == TokenType.STRING) {
-                    tree.Add(tok);
+                    Node STRING = new Tree.StringLit(tok.getStringVal());
+                    tok = scanner.getNextToken();
+                    return STRING;
                 }
             }
 
-            return null;
+            else {
+                Node nil = new Tree.Nil();
+                return nil;
+            }
+
         }
   
         protected Node parseRest()
