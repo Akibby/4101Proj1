@@ -35,6 +35,7 @@
 
 
 using System;
+using System.Collections.Generic;
 using Tokens;
 using Tree;
 
@@ -50,50 +51,48 @@ namespace Parse
         {
             // TODO: write code for parsing an exp
 
+            var tree = new List<Token>();
             Token tok = scanner.getNextToken();
             TokenType tt = tok.getType();
+
+            while (tt != null) { 
             
-            if (tt == TokenType.LPAREN) {
+                if (tt == TokenType.LPAREN) {
+                    tree.Add(tok);
+                }
 
+                else if (tt == TokenType.RPAREN) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.INT) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.DOT) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.TRUE) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.FALSE) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.IDENT) {
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.QUOTE){
+                    tree.Add(tok);
+                }
+
+                else if (tt == TokenType.STRING) {
+                    tree.Add(tok);
+                }
             }
-
-            else if (tt == TokenType.RPAREN) {
-
-            }
-
-            else if (tt == TokenType.INT)
-            {
-
-            }
-
-            else if (tt == TokenType.DOT) {
-
-            }
-
-            else if (tt == TokenType.TRUE) {
-
-            }
-
-            else if (tt == TokenType.FALSE) {
-
-            }
-
-            else if (tt == TokenType.IDENT) {
-
-            }
-
-            else if (tt == TokenType.QUOTE){
-
-            }
-
-            else if (tt == TokenType.STRING) {
-
-            }
-
-            else if (tok == null) {
-                return null;
-            }
-
 
             return null;
         }
