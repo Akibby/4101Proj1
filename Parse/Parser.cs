@@ -33,7 +33,6 @@
 // parser discards the offending token (which probably was a DOT
 // or an RPAREN) and attempts to continue parsing with the next token.
 
-// test
 
 using System;
 using Tokens;
@@ -50,6 +49,10 @@ namespace Parse
         public Node parseExp()
         {
             // TODO: write code for parsing an exp
+
+            var tok = scanner;
+            if (!)
+
             return null;
         }
   
