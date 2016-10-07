@@ -15,23 +15,9 @@ namespace Parse
         private char[] buf = new char[BUFSIZE];
 
         public Scanner(TextReader i) { In = i; }
-
+  
         // TODO: Add any other methods you need
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
-        //Test comment
+
         public Token getNextToken()
         {
             int ch;
