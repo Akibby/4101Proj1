@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Parse\Parser.cs" />
     <Compile Include="Parse\Scanner.cs" />
-    <Compile Include="ScannerTest.cs" />
     <Compile Include="Special\Begin.cs" />
     <Compile Include="Special\Cond.cs" />
     <Compile Include="Special\Define.cs" />

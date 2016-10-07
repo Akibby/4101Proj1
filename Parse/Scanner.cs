@@ -15,9 +15,9 @@ namespace Parse
         private char[] buf = new char[BUFSIZE];
 
         public Scanner(TextReader i) { In = i; }
-  
-        // TODO: Add any other methods you need
 
+        // TODO: Add any other methods you need
+        //Test comment
         public Token getNextToken()
         {
             int ch;
@@ -29,12 +29,23 @@ namespace Parse
                 // buffer, but reading individual characters from the
                 // input stream is easier.
                 ch = In.Read();
-   
+
                 // TODO: skip white space and comments
 
                 if (ch == -1)
                     return null;
-        
+                if (ch == '/')
+                {
+                    if (In.peek() == '/')
+                        In.ReadLine();
+                    if (In.peek() == 'n')
+                        In.Read();
+                    if (In.peek() == 't')
+                        In.Read();
+
+                    ch = In.Read();
+                }
+
                 // Special characters
                 else if (ch == '\'')
                     return new Token(TokenType.QUOTE);
@@ -45,7 +56,7 @@ namespace Parse
                 else if (ch == '.')
                     // We ignore the special identifier `...'.
                     return new Token(TokenType.DOT);
-                
+
                 // Boolean constants
                 else if (ch == '#')
                 {
@@ -71,11 +82,17 @@ namespace Parse
                 // String constants
                 else if (ch == '"')
                 {
+                    buf[0] = '"';
+                    ch = In.Read();
+                    while (ch != '"')
+                    {
+
+                    }
                     // TODO: scan a string into the buffer variable buf
                     return new StringToken(new String(buf, 0, 0));
                 }
 
-    
+
                 // Integer constants
                 else if (ch >= '0' && ch <= '9')
                 {
@@ -86,12 +103,13 @@ namespace Parse
                     // is not removed from the input stream
                     return new IntToken(i);
                 }
-        
+
                 // Identifiers
                 else if (ch >= 'A' && ch <= 'Z'
                          // or ch is some other valid first character
                          // for an identifier
-                         ) {
+                         )
+                {
                     // TODO: scan an identifier into the buffer
 
                     // make sure that the character following the integer
@@ -99,7 +117,7 @@ namespace Parse
 
                     return new IdentToken(new String(buf, 0, 0));
                 }
-    
+
                 // Illegal character
                 else
                 {
